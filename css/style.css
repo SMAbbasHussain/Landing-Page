@@ -1,0 +1,265 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --bg-primary: #0A0F1E;
+    --accent-cyan: #00E5FF;
+    --text-primary: #E0E0E0;
+    --text-secondary: #a0a8b9;
+    --border-color: rgba(0, 229, 255, 0.2);
+    --card-bg: rgba(23, 29, 51, 0.5);
+    --dark-text: #0A0F1E;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.text-center { text-align: center; }
+.relative { position: relative; }
+.z-10 { z-index: 10; }
+
+/* --- Background Bubbles Animation --- */
+.background-bubbles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background-color: var(--bg-primary); /* Solid background color */
+}
+
+.background-bubbles span {
+    position: absolute;
+    display: block;
+    background: rgba(0, 229, 255, 0.1); /* Glowing cyan particles */
+    bottom: -150px;
+    border-radius: 50%;
+    animation: rise 25s linear infinite;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
+}
+
+.background-bubbles span:nth-child(1) { left: 10%; width: 50px; height: 50px; animation-delay: 0s; animation-duration: 20s; }
+.background-bubbles span:nth-child(2) { left: 20%; width: 25px; height: 25px; animation-delay: 2s; animation-duration: 15s; }
+.background-bubbles span:nth-child(3) { left: 35%; width: 30px; height: 30px; animation-delay: 7s; }
+.background-bubbles span:nth-child(4) { left: 50%; width: 80px; height: 80px; animation-delay: 0s; animation-duration: 18s; }
+.background-bubbles span:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; animation-duration: 22s; }
+.background-bubbles span:nth-child(6) { left: 85%; width: 120px; height: 120px; animation-delay: 3s; background: linear-gradient(135deg, rgba(34, 211, 238, 0.05), rgba(13, 148, 136, 0.05)); }
+
+@keyframes rise {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+}
+
+/* --- Typography & Links --- */
+a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover { color: #fff; }
+
+h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; }
+h2 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; }
+h3 { font-size: 1.5rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
+
+/* REPLACE the .gradient-text rule */
+.gradient-text {
+    color: var(--accent-cyan);
+    background: none; /* Remove gradient */
+    -webkit-background-clip: unset;
+    background-clip: unset;
+}
+
+.subtitle, .section-header p {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 1.5rem auto 2.5rem auto;
+    line-height: 1.6;
+}
+
+/* --- Header --- */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    padding: 1rem 0;
+    background: rgba(10, 15, 30, 0.5); /* Darker, less blue background */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-container { display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; align-items: center; gap: 0.75rem; font-size: 1.5rem; font-weight: 700; color: #fff; }
+/* This is the corrected rule */
+.logo-icon {
+    width: 36px;
+    height: 36px;
+    background: none; /* This makes the background transparent */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-nav { display: flex; gap: 2rem; }
+.main-nav a { font-weight: 500; color: var(--text-secondary); }
+.main-nav a:hover { color: var(--accent-cyan); }
+
+
+/* --- Hero Section --- */
+.hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: 5rem; }
+
+/* --- Buttons --- */
+.cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+.btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.btn-primary {
+    background: var(--accent-cyan); /* Solid cyan color */
+    color: var(--dark-text);
+}
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 229, 255, 0.4);
+}
+.btn-secondary {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+.btn-secondary:hover {
+    background-color: var(--accent-cyan);
+    color: var(--bg-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(34, 211, 238, 0.2);
+}
+
+/* --- Sections --- */
+section { padding: 6rem 0; }
+.section-header { text-align: center; margin-bottom: 4rem; }
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures the icon fits without being stretched or cropped */
+    border-radius: 4px;  /* Optional: gives the image slightly rounded corners */
+}
+/* --- Feature Cards --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.card {
+    background-color: var(--card-bg); /* Use the defined card background */
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px); /* Add a subtle blur */
+}
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.card-icon {
+    width: 64px; height: 64px;
+    margin: 0 auto 1.5rem auto;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(0, 229, 255, 0.1); /* Subtle glowing background */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.card-icon svg {
+    color: var(--accent-cyan);
+    width: 32px; height: 32px;
+}
+.card:hover .card-icon { transform: scale(1.1); }
+.card-desc { color: var(--text-secondary); line-height: 1.6; }
+
+/* --- Why Us Section --- */
+.why-us {
+    background-color: rgba(23, 29, 51, 0.3); /* Match the darker theme */
+}
+
+.why-us-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+.why-us-icon {
+    width: 64px; height: 64px;
+    margin: 0 auto 1.5rem auto;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--accent-cyan); /* Solid cyan background */
+}
+.why-us-icon svg { width: 32px; height: 32px; color: #fff; }
+.why-us-item p { color: var(--text-secondary); line-height: 1.6; max-width: 350px; margin: 0 auto; }
+
+/* --- Footer --- */
+footer {
+    border-top: 1px solid var(--border-color);
+    padding: 3rem 0;
+}
+footer .logo { justify-content: center; }
+.copyright { color: var(--text-secondary); margin-top: 1rem; }
+
+/* --- Scroll Animations --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.card.fade-in:nth-child(2) { transition-delay: 0.1s; }
+.card.fade-in:nth-child(3) { transition-delay: 0.2s; }
+.card.fade-in:nth-child(4) { transition-delay: 0.3s; }
+.why-us-item.fade-in:nth-child(2) { transition-delay: 0.1s; }
+.why-us-item.fade-in:nth-child(3) { transition-delay: 0.2s; }
+
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .main-nav { display: none; } /* Simple hiding for mobile, can be replaced with a hamburger menu */
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn {
+        width: 90%;
+        justify-content: center;
+    }
+    section { padding: 4rem 0; }
+}
